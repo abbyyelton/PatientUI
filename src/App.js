@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import Login from './components/login';
+import Patients from './components/patients';
+import Patient from './components/patient';
+import useToken from './useToken';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+    const { token, setToken } = useToken();
+
+    if (!token) {
+        return <Login setToken={setToken} />
+    }
+
+    return (
+        <Routes>
+            <Route path="/patients" element={<Patients />}></Route>
+            <Route path="/patients/:patientId" element={<Patient />}></Route>
+        </Routes>
+    )
 }
-
-export default App;
