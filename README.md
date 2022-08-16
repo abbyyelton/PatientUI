@@ -4,6 +4,7 @@ This project contains a user login page with valid emails of `test@email.com` an
 
 ## To Run
 
+In the project directory, the first time you will need to run: `npm install`.
 Make sure the API is running on port 44374 or update the .env file to the port you are using.
 In the project directory, run:
  `npm start` 
